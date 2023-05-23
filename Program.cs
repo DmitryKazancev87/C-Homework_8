@@ -15,29 +15,26 @@ void CreateArray(int[,] array)
 
 void MinSumRow(int[,] array)
 {
-    int MinRowSum=0;
-    int MinSumRowIndex=0;
-    int SumRow=0;
+    int MinRowSum = 0;
+    int MinSumRowIndex = 0;
+    int SumRow = 0;
 
     for (int i = 0; i < array.GetLength(1); i++)
     {
-        MinRowSum=array[0,i]+MinRowSum;
+        MinRowSum+= array[0, i];
     }
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            SumRow=array[i,j]+SumRow;
-            if (SumRow<MinRowSum)
+        for (int j = 0; j < array.GetLength(1); j++) SumRow+= array[i, j];
+            if (SumRow < MinRowSum)
             {
-                MinRowSum=SumRow;
-                MinSumRowIndex=i;
+                MinRowSum = SumRow;
+                MinSumRowIndex = i;
             }
-            SumRow=0;
+            SumRow = 0;
         }
-        Console.Write($"{minSumRowIndex+1} это строка с минимальной суммой");
+        Console.Write($"{MinSumRowIndex+1} это строка с минимальной суммой.");
     }
-}
 
 void PrintArray(int[,] array)
 {
@@ -51,8 +48,9 @@ void PrintArray(int[,] array)
     }
 }
 
-int[,] array = new int[2, 4];
+int[,] array = new int[3, 4];
 CreateArray(array);
-MinSumRow(array);
 PrintArray(array);
-Console.WriteLine("Строка с минимальной суммой в ряде найдена.");
+MinSumRow(array);
+Console.WriteLine();
+Console.Write("Строка с минимальной суммой в ряде найдена.");
